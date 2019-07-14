@@ -1,0 +1,59 @@
+body {
+    background-color: whitesmoke;
+    color: black;
+}
+#main {
+    display: none;
+    height: 132px;
+    width: 300px;
+    background: lightgrey;
+    padding: 0px;
+    overflow: hidden;
+    border: 2px double #ff0;
+}
+.kepala {
+    font-family: 'Trocchi', serif;
+    text-align: left;
+    background-color: #ffffff;
+    color: #d3d3d3;
+    border-radius: 0px 0px 30px 30px;
+    padding: 3px 30px 3px 30px;
+    margin: 10px 10px 0px 10px;
+    border-style: none outset outset;
+    box-shadow: 5px 5px 10px gray;
+}
+.container1 > .menu {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+.container1 > .datadiri {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 5px 5px 10px gray;
+}
+ul {
+    margin: 20px;
+    padding: 30px;
+    text-align: center;
+}
+li {
+    background-color: lightgray;
+    border-left: 5px solid grey;
+    padding: 5px 5px 5px 0px;
+    border-radius: 30px;
+}
+.satu {
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px gray;
+}
+.dua {
+    text-align: center;
+    size: 30px;
+    border-style: dotted red;
+    margin: 0;
+    padding: 0;
+}
