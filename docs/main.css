@@ -1,9 +1,14 @@
 body {
+    font-family: 'Handlee', cursive;
     background-color: whitesmoke;
     color: black;
 }
+h1 span {
+    border: 4px dashed #20bcd5;
+    border-radius: 30px;
+    padding: 10px;
+}
 .kepala {
-    font-family: 'Trocchi', serif;
     text-align: left;
     background-color: #ffffff;
     color: #d3d3d3;
@@ -31,7 +36,7 @@ body {
     box-shadow: 5px 5px 10px gray;
 }
 ul {
-    margin: 20px;
+    margin: 0;
     padding: 30px;
     text-align: center;
 }
@@ -46,9 +51,9 @@ li {
     box-shadow: 5px 5px 10px gray;
 }
 .dua {
+    color: #20bcd5;
     text-align: center;
     size: 30px;
-    border-style: dotted red;
     margin: 0;
     padding: 0;
 }
