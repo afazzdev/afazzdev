@@ -1,4 +1,4 @@
-## Welcome!
+## About me!
 
 ![About Me](https://github.com/afazzdev/afazzdev/blob/master/assets/AboutMe.png)
 
