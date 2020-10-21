@@ -6,22 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
-    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
+    "export": "next export"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^4.0.0",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
-    "apollo-link-http": "^1.5.17",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
+    "axios": "^0.20.0",
+    "framer-motion": "^2.9.3",
     "gray-matter": "^4.0.2",
-    "isomorphic-unfetch": "^3.1.0",
     "next": "9.5.4",
-    "next-with-apollo": "^5.1.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "swr": "^0.3.6"
   },
   "devDependencies": {
     "@types/node": "^14.11.7",
