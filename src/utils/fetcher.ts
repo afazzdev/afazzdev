@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-const API = process.env.API_URL || "https://afazzdev-blog.herokuapp.com";
+const API = process.env.API_URL || "http://localhost:1337";
 
 export const withEndpoint = (path: string) => API + path;
 
