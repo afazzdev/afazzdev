@@ -1,6 +1,6 @@
 ## About me!
 
-![About Me](https://github.com/afazzdev/afazzdev/blob/master/assets/AboutMe.png)
+![About Me](https://github.com/afazzdev/afazzdev/blob/master/public/images/AboutMe.png)
 
 ## My Github Stats
 
