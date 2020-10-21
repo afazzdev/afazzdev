@@ -1,30 +1,35 @@
+import { useEffect } from "react";
 import { AppProps } from "next/app";
-import Head from "next/head";
-import "../styles/globals.css";
-import { ApolloProvider } from "@apollo/react-hooks";
-import withData from "../utils/apollo";
+import { AnimatePresence } from "framer-motion";
+import { CssBaseline, ThemeProvider } from "@material-ui/core";
+import { SWRConfig } from "swr";
 
-function MyApp({ Component, pageProps, apollo }: AppProps & { apollo: any }) {
+import { fetcher } from "../utils/fetcher";
+import { theme } from "../styles/theme";
+
+function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement!.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
-    <ApolloProvider client={apollo}>
-      <Head>
-        <title>Strapi blog</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Staatliches"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
-        />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js" />
-        <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
-      </Head>
-      <Component {...pageProps} />
-    </ApolloProvider>
+    <AnimatePresence exitBeforeEnter>
+      <SWRConfig
+        value={{
+          fetcher,
+        }}
+      >
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </SWRConfig>
+    </AnimatePresence>
   );
 }
 
-export default withData(MyApp);
+export default App;
