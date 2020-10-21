@@ -3,8 +3,37 @@ import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 
-const name = "Your Name";
+import { motion } from "framer-motion";
+
+const name = "Ahmad Faizi";
 export const siteTitle = "Next.js Sample Website";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+// Custom variant
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 export default function Layout({
   children,
@@ -14,7 +43,12 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -34,7 +68,7 @@ export default function Layout({
         {home ? (
           <>
             <img
-              src="/images/profile.jpg"
+              src="/images/AboutMe.png"
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
@@ -42,24 +76,24 @@ export default function Layout({
           </>
         ) : (
           <>
-            <Link href="/">
+            {/* <Link href="/">
               <a>
                 <img
-                  src="/images/profile.jpg"
+                  src="/images/AboutMe.png"
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                   alt={name}
                 />
               </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
+            </Link> */}
+            {/* <h2 className={utilStyles.headingLg}>
               <Link href="/">
                 <a className={utilStyles.colorInherit}>{name}</a>
               </Link>
-            </h2>
+            </h2> */}
           </>
         )}
       </header>
-      <main>{children}</main>
+      <motion.main variants={fadeInUp}>{children}</motion.main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
@@ -67,6 +101,6 @@ export default function Layout({
           </Link>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

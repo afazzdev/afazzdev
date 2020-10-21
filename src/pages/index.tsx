@@ -1,36 +1,37 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
+import Link from "next/link";
+import { fetcher } from "../utils/fetcher";
+import { ARTICLES } from "../utils/fetcherConstant";
+import useSWR from "swr";
+import { InferGetStaticPropsType } from "next";
 
-export default function Home({ allPostsData }) {
+export async function getStaticProps() {
+  const articles = await fetcher(ARTICLES);
+  return {
+    props: {
+      articles,
+    },
+    revalidate: 1,
+  };
+}
+
+export default function Home(
+  props: InferGetStaticPropsType<typeof getStaticProps>,
+) {
   return (
     <Layout home>
-      <Head>…</Head>
-      <section className={utilStyles.headingMd}>…</section>
+      <Head>
+        <title>@afazzdev's personal blog</title>
+      </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
+          <Link href="/articles">
+            <a className="link">Articles</a>
+          </Link>
         </ul>
       </section>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
 }
